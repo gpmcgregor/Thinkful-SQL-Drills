@@ -1,0 +1,35 @@
+//What was the hottest day in our data set? Where was that?
+SELECT
+    zip,
+    MAX(maxtemperaturef)
+FROM
+    weather
+GROUP by 1;
+// returned max temp of 134 in zip 94063
+
+//How many trips started at each station?
+SELECT
+	start_station,
+    COUNT(*) as start_station_count
+FROM
+    trips
+GROUP by 1;
+// returned a list of stations and the no. trips started at each
+
+//What's the shortest trip that happened?
+SELECT
+	*
+FROM
+    trips
+ORDER BY duration ASC
+LIMIT 5;
+// returned lowest 5 trips, which all happened to be 60 (seconds?)
+
+//What is the average trip duration, by end station?
+SELECT
+	end_station,
+	AVG(duration)
+FROM
+    trips
+GROUP BY 1;
+// returned list of stations with avg trip durtion
