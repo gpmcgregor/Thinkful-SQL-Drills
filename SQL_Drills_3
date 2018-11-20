@@ -1,0 +1,23 @@
+--What are the three longest trips on rainy days?
+WITH
+    rainydays
+AS (
+    SELECT
+        events,
+        date
+    FROM
+        weather
+    WHERE events LIKE 'Rain%'
+)
+
+SELECT
+	t.duration
+	rainydays.date
+	t.trip_id
+FROM
+	trips t
+JOIN
+	rainydays
+ON
+	rainydays.date LIKE t.start_date
+ORDER BY duration DESC;
